@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retail Loop — Cabinet de Recrutement Grande Distribution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #162233;
+      --accent: #e8521a;
+      --accent-light: #ff7043;
+      --cream: #f5f0e8;
+      --cream-dark: #ede7d8;
+      --text: #1a2332;
+      --text-muted: #5a6a7e;
+      --white: #ffffff;
+      --border: rgba(13,27,42,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(13,27,42,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-mark svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--accent-light) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -5%;
+      width: 60%;
+      height: 130%;
+      background: radial-gradient(ellipse at center, rgba(232,82,26,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(232,82,26,0.4), transparent);
+    }
+
+    /* Animated grid lines */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,82,26,0.15);
+      border: 1px solid rgba(232,82,26,0.35);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(232,82,26,0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: var(--white);
+    }
+
+    /* Stats strip in hero */
+    .hero-tagline {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 3.5rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .hero-tagline-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .hero-tagline-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-tagline-main {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-tagline-sub {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.38);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card-stack {
+      position: relative;
+      width: 360px;
+      height: 420px;
+    }
+
+    .hcard {
+      position: absolute;
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 1.8rem;
+    }
+
+    .hcard-main {
+      width: 320px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      background: linear-gradient(135deg, #1d2f45 0%, #162233 100%);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .hcard-back1 {
+      width: 290px;
+      left: 50%;
+      top: calc(50% + 20px);
+      transform: translateX(-50%) rotate(-6deg);
+      z-index: 2;
+      opacity: 0.6;
+    }
+
+    .hcard-back2 {
+      width: 270px;
+      left: 50%;
+      top: calc(50% + 30px);
+      transform: translateX(-50%) rotate(5deg);
+      z-index: 1;
+      opacity: 0.35;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-12px); }
+    }
+
+    .hcard-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .hcard-company {
+      font-size: 0.82rem;
+      color: var(--accent-light);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+
+    .hcard-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hcard-tag {
+      background: rgba(232,82,26,0.12);
+      border: 1px solid rgba(232,82,26,0.2);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.72rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 50px;
+    }
+
+    .hcard-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hcard-salary {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .hcard-match {
+      background: rgba(22, 163, 74, 0.15);
+      border: 1px solid rgba(22,163,74,0.3);
+      color: #4ade80;
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* Notification bubble */
+    .hero-notif {
+      position: absolute;
+      bottom: 30px;
+      right: -30px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: slideIn 0.8s 0.6s ease both, float2 6s 1s ease-in-out infinite;
+      z-index: 4;
+      min-width: 200px;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .notif-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(22,163,74,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .notif-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .notif-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 100px 5%; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    h2 em { font-style: normal; color: var(--accent); }
+
+    /* ── CLIENTS ── */
+    .clients {
+      background: var(--white);
+      padding: 60px 5%;
+    }
+
+    .clients-label {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .clients-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .client-logo-wrap {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 64px;
+      min-width: 130px;
+      transition: all 0.25s;
+      filter: grayscale(1) opacity(0.55);
+    }
+
+    .client-logo-wrap:hover {
+      filter: grayscale(0) opacity(1);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(13,27,42,0.1);
+      border-color: rgba(232,82,26,0.2);
+    }
+
+    .client-logo-wrap img {
+      max-height: 34px;
+      max-width: 120px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .client-logo-fallback {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* ── EXPERTISE ── */
+    .expertise {
+      background: var(--cream);
+    }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .expertise-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .exp-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .exp-card:hover::before { transform: scaleX(1); }
+
+    .exp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(13,27,42,0.08);
+    }
+
+    .exp-card.featured {
+      grid-column: span 2;
+      background: var(--navy);
+      border-color: transparent;
+    }
+
+    .exp-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .exp-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-card.featured .exp-title,
+    .exp-card.featured .exp-desc { color: var(--white); }
+    .exp-card.featured .exp-desc { opacity: 0.7; }
+
+    .exp-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .expertise-text { }
+
+    .expertise-text p {
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .expertise-list {
+      list-style: none;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .expertise-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .expertise-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -10%;
+      width: 60%;
+      height: 180%;
+      background: radial-gradient(ellipse at center, rgba(232,82,26,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .process h2 { color: var(--white); }
+
+    .process-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .process-header p {
+      max-width: 400px;
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .step {
+      background: var(--navy);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .step:hover { background: #1d2f45; }
+
+    .step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.06);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+
+    /* ── PRICING ── */
+    .pricing {
+      background: var(--cream-dark);
+    }
+
+    .pricing-main {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      background: var(--white);
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      padding: 3rem 3.5rem;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pricing-big {
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .pricing-big-pct {
+      font-family: 'Syne', sans-serif;
+      font-size: 5.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .pricing-big-pct span {
+      font-size: 3rem;
+      color: var(--accent);
+      vertical-align: super;
+    }
+
+    .pricing-big-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 6px;
+    }
+
+    .pricing-divider {
+      width: 1px;
+      height: 100px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .pricing-breakdown {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex: 1;
+      flex-wrap: wrap;
+    }
+
+    .pricing-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .pricing-step-circle {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .pricing-step-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .pricing-step-amount {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .pricing-step-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .pricing-step-arrow {
+      font-size: 1.4rem;
+      color: var(--border);
+      flex-shrink: 0;
+      padding-top: 4px;
+    }
+
+    .pricing-example {
+      width: 100%;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .pricing-example-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .pricing-example-text {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .pricing-example-text strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .pricing-guarantee {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .pricing-guarantee-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .pricing-guarantee-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .pricing-guarantee-sub {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    /* ── TESTIMONIALS / NUMBERS ── */
+    .numbers {
+      background: var(--white);
+    }
+
+    .numbers-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+
+    .number-item {
+      background: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .number-item:hover { background: var(--cream); }
+
+    .number-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .number-val span { color: var(--accent); }
+
+    .number-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(232,82,26,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact h2 { color: var(--white); }
+
+    .contact-info p {
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-detail-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(232,82,26,0.12);
+      border: 1px solid rgba(232,82,26,0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-text {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact-detail-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    /* Form */
+    .contact-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 3rem;
+    }
+
+    .form-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .form-group select option { background: var(--navy); color: var(--white); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      background: rgba(232,82,26,0.05);
+    }
+
+    .form-group textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-check input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .form-check label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .form-check label a { color: var(--accent-light); text-decoration: none; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 1rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(232,82,26,0.35);
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      color: #4ade80;
+      font-size: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080f18;
+      padding: 3rem 5%;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 120px;
+      }
+
+      .hero-visual { display: none; }
+
+      .expertise-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      .process-steps { grid-template-columns: 1fr 1fr; }
+
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
+
+      .numbers-inner { grid-template-columns: 1fr 1fr; }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .numbers-inner { grid-template-columns: 1fr 1fr; }
+      .hero-stats { flex-direction: column; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4C7.58 4 4 7.58 4 12s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 10.5c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+      </svg>
+    </div>
+    <span class="logo-text">Retail<span>Loop</span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#expertise">Notre expertise</a></li>
+    <li><a href="#processus">Notre processus</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="accueil">
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Spécialiste Grande Distribution</div>
+
+    <h1>Le recrutement<br/>pensé pour le <em>Retail</em></h1>
+
+    <p>Retail Loop connecte les meilleurs talents de la grande distribution aux enseignes qui les cherchent. Rapide, précis, humain.</p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Déposer un besoin
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#expertise" class="btn-outline">Découvrir nos services</a>
+    </div>
+
+    <div class="hero-tagline">
+      <div class="hero-tagline-num">48h</div>
+      <div class="hero-tagline-text">
+        <div class="hero-tagline-main">Premiers profils livrés.</div>
+        <div class="hero-tagline-sub">Pas de promesses. Des candidats qualifiés sur votre bureau en deux jours.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hcard hcard-back2"></div>
+      <div class="hcard hcard-back1"></div>
+      <div class="hcard hcard-main">
+        <div class="hcard-role">Directeur de Magasin</div>
+        <div class="hcard-company">Grande distribution — Région Île-de-France</div>
+        <div class="hcard-tags">
+          <span class="hcard-tag">Management</span>
+          <span class="hcard-tag">P&L</span>
+          <span class="hcard-tag">CDI</span>
+          <span class="hcard-tag">Grande Surface</span>
+        </div>
+        <div class="hcard-footer">
+          <div class="hcard-salary">55–65 k€</div>
+          <div class="hcard-match">✓ Profil validé</div>
+        </div>
+      </div>
+
+      <div class="hero-notif">
+        <div class="notif-icon">✓</div>
+        <div>
+          <div class="notif-title">Recrutement finalisé</div>
+          <div class="notif-sub">Chef de rayon — Carrefour Market</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLIENTS ══════════ -->
+<div class="clients">
+  <div class="clients-label">Ils nous font confiance</div>
+  <div class="clients-grid">
+
+    <!-- E.Leclerc -->
+    <div class="client-logo-wrap">
+      <svg viewBox="0 0 200 56" xmlns="http://www.w3.org/2000/svg" height="48" style="overflow:visible">
+        <text x="2" y="46" font-family="Arial Black, Impact, sans-serif" font-size="52" font-weight="900" fill="#003087" letter-spacing="-2">e.</text>
+        <text x="60" y="44" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#003087" letter-spacing="-0.5">leclerc</text>
+      </svg>
+    </div>
+
+    <!-- Carrefour Market -->
+    <div class="client-logo-wrap">
+      <svg viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg" height="48">
+        <polygon points="6,3 34,26 6,49 0,49 28,26 0,3" fill="#004A96"/>
+        <polygon points="30,3 56,3 28,26 56,49 30,49 4,26" fill="#E3001B"/>
+        <text x="62" y="31" font-family="Arial, sans-serif" font-size="19" font-weight="700" fill="#004A96">carrefour</text>
+        <text x="62" y="48" font-family="Arial, sans-serif" font-size="15" font-weight="600" fill="#004A96" letter-spacing="0.3">market</text>
+      </svg>
+    </div>
+
+    <!-- Intermarché -->
+    <div class="client-logo-wrap">
+      <svg viewBox="0 0 230 52" xmlns="http://www.w3.org/2000/svg" height="44">
+        <rect x="0" y="2" width="36" height="48" rx="3" fill="#D0021B"/>
+        <text x="4" y="36" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="white">i</text>
+        <text x="42" y="35" font-family="Arial, sans-serif" font-size="21" font-weight="800" fill="#D0021B" letter-spacing="-0.3">intermarché</text>
+      </svg>
+    </div>
+
+    <!-- Brico Cash -->
+    <div class="client-logo-wrap">
+      <svg viewBox="0 0 190 52" xmlns="http://www.w3.org/2000/svg" height="44">
+        <rect x="0" y="0" width="190" height="52" rx="5" fill="#E8420A"/>
+        <text x="10" y="36" font-family="Arial Black, Impact, sans-serif" font-size="28" font-weight="900" fill="white" letter-spacing="0.5">BRICO</text>
+        <text x="105" y="36" font-family="Arial Black, Impact, sans-serif" font-size="28" font-weight="900" fill="white" letter-spacing="0.5">CASH</text>
+      </svg>
+    </div>
+
+    <!-- Darty -->
+    <div class="client-logo-wrap">
+      <svg viewBox="0 0 140 52" xmlns="http://www.w3.org/2000/svg" height="44">
+        <rect x="0" y="4" width="36" height="44" rx="3" fill="#E30613"/>
+        <text x="4" y="34" font-family="Arial Black, sans-serif" font-size="20" font-weight="900" fill="white">D</text>
+        <text x="42" y="40" font-family="Arial Black, sans-serif" font-size="32" font-weight="900" fill="#1A1A1A" letter-spacing="-1">DARTY</text>
+      </svg>
+    </div>
+
+    <!-- Mr Bricolage -->
+    <div class="client-logo-wrap">
+      <svg viewBox="0 0 225 52" xmlns="http://www.w3.org/2000/svg" height="44">
+        <text x="0" y="38" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#3C8C2F">Mr.</text>
+        <text x="58" y="38" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#E30613">Bricolage</text>
+      </svg>
+    </div>
+
+    <!-- My Auchan -->
+    <div class="client-logo-wrap">
+      <svg viewBox="0 0 195 52" xmlns="http://www.w3.org/2000/svg" height="44">
+        <text x="2" y="22" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#666" letter-spacing="1">MY</text>
+        <text x="2" y="46" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#E30613" letter-spacing="-0.5">auchan</text>
+        <circle cx="180" cy="26" r="10" fill="#E30613"/>
+        <path d="M174,26 Q180,14 186,26 Q180,20 174,26 Z" fill="white"/>
+      </svg>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- ══════════ EXPERTISE ══════════ -->
+<section class="expertise" id="expertise">
+  <div class="section-label reveal">Ce que nous faisons</div>
+
+  <div class="expertise-grid">
+    <div class="expertise-cards reveal">
+      <div class="exp-card featured">
+        <div class="exp-icon">🎯</div>
+        <div class="exp-title" style="color:white;">Recrutement 100% Retail</div>
+        <div class="exp-desc">Nous ne faisons que ça. Notre réseau est entièrement dédié aux métiers de la grande distribution et du commerce spécialisé.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">⚡</div>
+        <div class="exp-title">Réactivité</div>
+        <div class="exp-desc">Premiers profils sous 48h. On ne vous fait pas attendre.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🤝</div>
+        <div class="exp-title">Accompagnement</div>
+        <div class="exp-desc">Un consultant dédié de la définition du poste jusqu'à l'intégration.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-icon">🔒</div>
+        <div class="exp-title">Garantie</div>
+        <div class="exp-desc">Remplacement garanti en cas de départ dans les 3 premiers mois.</div>
+      </div>
+    </div>
+
+    <div class="expertise-text reveal" style="transition-delay:0.15s">
+      <h2>L'expertise <em>retail</em><br/>au service de votre croissance</h2>
+      <p>Retail Loop est né d'un constat simple : le recrutement en grande distribution mérite des experts qui parlent votre langage — gestion de rayons, taux de démarque, management de 50 personnes le samedi matin.</p>
+      <p>Nos consultants ont eux-mêmes évolué dans l'univers du retail. Ils savent ce que vous cherchez avant même que vous le formuliez.</p>
+
+      <ul class="expertise-list">
+        <li>Direction de magasin & de site</li>
+        <li>Responsables de rayon & chefs de secteur</li>
+        <li>Fonctions support (RH, logistique, achat)</li>
+        <li>Commerce spécialisé & GSB</li>
+        <li>E-commerce & click & collect</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROCESS ══════════ -->
+<section class="process" id="processus">
+  <div class="process-header reveal">
+    <div>
+      <div class="section-label" style="color:var(--accent-light)">Comment ça fonctionne</div>
+      <h2>Un processus<br/>rodé et transparent</h2>
+    </div>
+    <p>De la prise de brief à la signature du contrat, vous savez exactement où en est votre recrutement.</p>
+  </div>
+
+  <div class="process-steps reveal" style="transition-delay:0.1s">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon">💬</div>
+      <div class="step-title">Brief & cadrage</div>
+      <div class="step-desc">Un échange de 30 min pour cerner précisément votre besoin, la culture du poste et vos impératifs.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon">🔍</div>
+      <div class="step-title">Sourcing ciblé</div>
+      <div class="step-desc">Activation de notre réseau retail, chasse directe et diffusion sélective d'annonces.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon">📋</div>
+      <div class="step-title">Sélection & évaluation</div>
+      <div class="step-desc">Entretiens approfondis, évaluation des soft skills et vérification des références.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-icon">🎉</div>
+      <div class="step-title">Présentation & suivi</div>
+      <div class="step-desc">2 à 4 profils qualifiés présentés, accompagnement jusqu'à la signature et suivi post-intégration.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHIFFRES ══════════ -->
+<section class="numbers">
+  <div class="section-label reveal">Retail Loop en chiffres</div>
+
+  <div class="numbers-inner reveal" style="transition-delay:0.1s">
+    <div class="number-item">
+      <div class="number-val">7<span>+</span></div>
+      <div class="number-label">Enseignes partenaires</div>
+    </div>
+    <div class="number-item">
+      <div class="number-val">48<span>h</span></div>
+      <div class="number-label">Délai premiers profils</div>
+    </div>
+    <div class="number-item">
+      <div class="number-val">92<span>%</span></div>
+      <div class="number-label">Taux de satisfaction client</div>
+    </div>
+    <div class="number-item">
+      <div class="number-val">3<span>mois</span></div>
+      <div class="number-label">Garantie de remplacement</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRICING ══════════ -->
+<section class="pricing" id="tarifs">
+  <div style="text-align:center" class="reveal">
+    <div class="section-label" style="justify-content:center">Tarification</div>
+    <h2>Simple. Transparente. <em>Sans surprise.</em></h2>
+  </div>
+
+  <div class="pricing-main reveal" style="transition-delay:0.1s">
+    <div class="pricing-big">
+      <div class="pricing-big-pct">15<span>%</span></div>
+      <div class="pricing-big-label">du salaire brut annuel</div>
+    </div>
+
+    <div class="pricing-divider"></div>
+
+    <div class="pricing-breakdown">
+      <div class="pricing-step">
+        <div class="pricing-step-circle">1</div>
+        <div>
+          <div class="pricing-step-title">Acompte à l'ouverture de la mission</div>
+          <div class="pricing-step-amount">10% des honoraires</div>
+          <div class="pricing-step-desc">Versé à la signature du mandat. Lance immédiatement la recherche.</div>
+        </div>
+      </div>
+      <div class="pricing-step-arrow">→</div>
+      <div class="pricing-step">
+        <div class="pricing-step-circle">2</div>
+        <div>
+          <div class="pricing-step-title">Solde à la signature du contrat</div>
+          <div class="pricing-step-amount">90% des honoraires restants</div>
+          <div class="pricing-step-desc">Dû uniquement lorsque le candidat signe. Vous ne payez qu'au résultat.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing-example">
+      <div class="pricing-example-label">Exemple concret</div>
+      <div class="pricing-example-text">Pour un poste à <strong>45 000 €</strong> brut annuel → honoraires totaux de <strong>6 750 €</strong> dont <strong>675 €</strong> d'acompte.</div>
+    </div>
+  </div>
+
+  <div class="pricing-guarantee reveal" style="transition-delay:0.2s">
+    <span class="pricing-guarantee-icon">🛡️</span>
+    <div>
+      <div class="pricing-guarantee-title">Garantie 3 mois incluse</div>
+      <div class="pricing-guarantee-sub">En cas de départ du candidat dans les 3 premiers mois, nous recommençons la mission sans supplément.</div>
+    </div>
+    <a href="#contact" class="btn-primary" style="flex-shrink:0;white-space:nowrap">Démarrer une mission →</a>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label" style="color:var(--accent-light)" class="reveal">Parlons-nous</div>
+      <h2 class="reveal">Votre prochain recrutement<br/>commence <em>ici</em></h2>
+      <p class="reveal">Décrivez-nous votre besoin, nous revenons vers vous sous 24h avec une proposition concrète.</p>
+
+      <div class="contact-details reveal">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="contact-detail-label">Adresse</div>
+            Paris, France
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📧</div>
+          <div class="contact-detail-text">
+            <div class="contact-detail-label">Email</div>
+            contact@retail-loop.fr
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="contact-detail-label">Téléphone</div>
+            +33 1 XX XX XX XX
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal" style="transition-delay:0.15s">
+      <div class="form-title">Déposer un besoin de recrutement</div>
+      <div class="form-subtitle">Réponse sous 24h ouvrées</div>
+
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Prénom *</label>
+            <input type="text" placeholder="Jean" required />
+          </div>
+          <div class="form-group">
+            <label>Nom *</label>
+            <input type="text" placeholder="Dupont" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Enseigne / Société *</label>
+          <input type="text" placeholder="ex. Carrefour Market — Région Sud" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email professionnel *</label>
+            <input type="email" placeholder="jean@enseigne.fr" required />
+          </div>
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" placeholder="+33 6 XX XX XX XX" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Poste à pourvoir *</label>
+          <select required>
+            <option value="" disabled selected>Sélectionnez un profil</option>
+            <option>Directeur / Directrice de magasin</option>
+            <option>Responsable de rayon</option>
+            <option>Chef de secteur</option>
+            <option>Responsable logistique</option>
+            <option>Responsable RH</option>
+            <option>Manager opérationnel</option>
+            <option>Acheteur / Category Manager</option>
+            <option>Autre profil retail</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Détaillez votre besoin</label>
+          <textarea placeholder="Localisation, volume de recrutement, contexte, délai souhaité..."></textarea>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="rgpd" required />
+          <label for="rgpd">J'accepte que Retail Loop traite mes données afin de traiter ma demande, conformément à sa <a href="#">politique de confidentialité</a>.</label>
+        </div>
+
+        <button type="submit" class="form-submit">
+          Envoyer ma demande
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        ✅ Votre message a bien été envoyé !<br/>
+        <span style="font-size:0.85rem;opacity:0.7;display:block;margin-top:8px">Nous vous recontactons sous 24h ouvrées.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="logo-text" style="font-family:'Syne',sans-serif;font-weight:800;color:white;">Retail<span style="color:var(--accent)">Loop</span></div>
+      <div class="footer-copy" style="margin-top:6px;">Cabinet de recrutement spécialisé Grande Distribution</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">Mentions légales</a></li>
+      <li><a href="#">Politique de confidentialité</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 Retail Loop. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // Smooth scroll for nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
